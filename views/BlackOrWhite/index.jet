@@ -1,0 +1,60 @@
+{{extends "./layouts/application.jet"}}
+
+{{ block ExtendHead() }}
+<link rel="stylesheet" href="/static/css/index/style.css">
+{{ end }}
+
+{{block documentBody()}}
+<div class="container">
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand black-link" href="#">Blog Name</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active black-link" aria-current="page" href="#">主页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link black-link" href="#">关于</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link black-link" href="/admin/dashboard">管理面板</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div style="margin-left: 2px; margin-right: 2px">
+        <div class="container mt-5">
+            <div class="row">
+                <!-- 文章摘要区域 -->
+                <div class="col-md-8">
+                    {{ range index,post := .posts}}
+                    <div>
+                        <h2>{{post.Title}}</h2>
+                        <p class="text-muted">作者: {{ post.AuthorID }} 发表日期: {{ post.CreatedAt }}</p>
+                        <p>{{ post.Content }}...</p>
+                        <a class="black-link" href="#">阅读全文</a>
+                    </div>
+                    {{ end }}
+                </div>
+
+                <!-- 侧边栏 -->
+                <div class="col-md-4">
+                    <h3>侧边栏</h3>
+                    <ul class="list-unstyled">
+                        <li><a class="black-link" href="#">链接1</a></li>
+                        <li><a class="black-link" href="#">链接2</a></li>
+                        <li><a class="black-link" href="#">链接3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

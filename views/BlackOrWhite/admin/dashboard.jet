@@ -1,0 +1,8 @@
+{{ extends "../layouts/admin.jet" }}
+
+{{ block adminContent() }}
+<main class="admin-content">
+    <!-- 内容区域，可以根据实际需要加载不同的内容 -->
+    <h1>欢迎来到后台管理</h1>
+</main>
+{{ end }}
