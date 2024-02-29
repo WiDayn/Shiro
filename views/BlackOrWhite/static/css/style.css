@@ -1,7 +1,7 @@
 body {
     background-color: white; /* 背景颜色为白色 */
 }
-nav, .btn-primary, .black-link {
+nav, .black-link {
     background-color: black;
     color: white !important;
     text-decoration: none !important;
