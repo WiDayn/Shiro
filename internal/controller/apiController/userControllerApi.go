@@ -1,8 +1,11 @@
 package apiController
 
 import (
+	"Shiro/internal/config"
 	"Shiro/internal/service"
+	"github.com/dgrijalva/jwt-go"
 	"github.com/kataras/iris/v12"
+	"time"
 )
 
 type UserController struct {
@@ -61,5 +64,19 @@ func (c *UserController) Login(ctx iris.Context) {
 		return
 	}
 
-	ctx.JSON(iris.Map{"message": "Login successful"})
+	// 创建JWT令牌
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"username": request.Username,
+		"exp":      time.Now().Add(time.Hour * 24).Unix(), // 有效期24小时
+	})
+
+	// 签名令牌
+	tokenString, err := token.SignedString([]byte(config.Application.JWTConfig.SigningKey))
+	if err != nil {
+		ctx.StatusCode(iris.StatusInternalServerError)
+		ctx.JSON(iris.Map{"message": "Could not generate token"})
+		return
+	}
+
+	ctx.JSON(iris.Map{"message": "Login successful", "token": tokenString})
 }

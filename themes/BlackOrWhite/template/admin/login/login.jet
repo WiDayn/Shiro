@@ -1,0 +1,23 @@
+[[ extends "./base.jet" ]]
+
+[[ block adminContent() ]]
+<h2>登录</h2>
+<form id="loginForm">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" style="max-width: 400px">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" style="max-width: 400px">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <p>没有账号？<a href="/admin/register" class="black-link">注册</a></p>
+    <button type="submit" class="btn btn-outline-dark">登录</button>
+</form>
+[[ raw: cssContent ]]
+[[ raw: jsContent ]]
+[[ end ]]

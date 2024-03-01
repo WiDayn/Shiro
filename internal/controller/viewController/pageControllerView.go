@@ -2,6 +2,7 @@ package viewController
 
 import (
 	"Shiro/internal/service"
+	"Shiro/internal/theme"
 	"github.com/kataras/iris/v12"
 )
 
@@ -24,7 +25,12 @@ func (c *PageController) ShowIndex(ctx iris.Context) {
 		ctx.JSON(iris.Map{"message": "Error loading posts"})
 		return
 	}
+	templatePath := "/page/index.jet" // 模板文件名
+	// 自动注入CSS和JS
+	theme.InjectStaticFiles(ctx, templatePath)
+
+	ctx.ViewData("username", ctx.Values().Get("username"))
 	ctx.ViewData("posts", posts)
 	ctx.ViewData("title", "Home Page")
-	ctx.View("index.jet")
+	ctx.View(templatePath)
 }

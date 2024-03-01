@@ -1,0 +1,28 @@
+[[ extends "../base.jet" ]]
+
+[[ block ApplicationHead() ]]
+<link rel="stylesheet" href="/static/css/admin/style.css">
+[[ block AdminHead() ]][[ end]]
+[[ end ]]
+
+[[ block documentBody() ]]
+<div class="container">
+    <div class="row">
+        [[ block sidebar() ]]
+        <div class="col-2">
+            <div class="card">
+                <div class="card-header" style="color: white">
+                    菜单
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item size-group-item"><a class="black-link" href="/">回到主页</a></li>
+                </ul>
+            </div>
+        </div>
+        [[ end ]]
+        <main class="admin-content col-10">
+            [[block adminContent()]][[end]]
+        </main>
+    </div>
+</div>
+[[ end ]]

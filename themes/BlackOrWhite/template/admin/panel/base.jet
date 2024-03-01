@@ -1,14 +1,13 @@
-{{ extends "../layouts/application.jet" }}
+[[ extends "../base.jet" ]]
 
-{{ block ApplicationHead() }}
-<link rel="stylesheet" href="/static/css/admin/style.css">
-{{ block AdminHead() }}{{ end}}
-{{ end }}
+[[ block ApplicationHead() ]]
+[[ block AdminHead() ]][[ end]]
+[[ end ]]
 
-{{ block documentBody() }}
+[[ block documentBody() ]]
 <div class="container">
     <div class="row">
-        {{ block sidebar() }}
+        [[ block sidebar() ]]
         <div class="col-2">
             <div class="card">
                 <div class="card-header" style="color: white">
@@ -16,18 +15,19 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item size-group-item"><a class="black-link" href="dashboard">仪表盘</a></li>
-                    <li class="list-group-item size-group-item"><a class="black-link" href="postList">文章列表</a></li>
-                    <li class="list-group-item size-group-item"><a class="black-link" href="newPost">发布文章</a></li>
+                    <li class="list-group-item size-group-item"><a class="black-link" href="post-list">文章列表</a></li>
+                    <li class="list-group-item size-group-item"><a class="black-link" href="new-post">发布文章</a></li>
                     <li class="list-group-item size-group-item"><a class="black-link" href="#">系统设置</a></li>
                     <li class="list-group-item size-group-item"><a class="black-link" href="#">用户管理</a></li>
                     <li class="list-group-item size-group-item"><a class="black-link" href="/">回到主页</a></li>
+                    <li class="list-group-item size-group-item"><a class="black-link" id="logoutLink">登出</a></li>
                 </ul>
             </div>
         </div>
-        {{ end }}
+        [[ end ]]
         <main class="admin-content col-10">
-            {{block adminContent()}}{{end}}
+            [[block adminContent()]][[end]]
         </main>
     </div>
 </div>
-{{ end }}
+[[ end ]]

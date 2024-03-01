@@ -17,12 +17,11 @@ func (repo *UserRepository) CreateUser(username, password, email string) error {
 	return err
 }
 
-func (repo *UserRepository) GetUserByUsername(username string) (int, string, error) {
-	var id int
+func (repo *UserRepository) GetUserByUsername(username string) (string, error) {
 	var password string
-	err := repo.Db.QueryRow("SELECT id, password FROM users WHERE username = ?", username).Scan(&id, &password)
+	err := repo.Db.QueryRow("SELECT password FROM users WHERE username = ?", username).Scan(&password)
 	if err != nil {
-		return 0, "", err
+		return "", err
 	}
-	return id, password, nil
+	return password, nil
 }

@@ -1,17 +1,17 @@
-{{ extends "../layouts/admin.jet" }}
-{{ block AdminHead() }}
+[[ extends "./base.jet" ]]
+[[ block AdminHead() ]]
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-{{ end }}
-{{ block adminContent() }}
+[[ end ]]
+[[ block adminContent() ]]
 <main class="admin-content">
     <h2>发布文章</h2>
-    <div class="mb-3">
-        <label for="postTitle" class="form-label">文章标题</label>
-        <input type="email" class="form-control" id="postTitle" placeholder="name@example.com">
-    </div>
-    <div>
-        <form class="row">
+    <form>
+        <div class="mb-3">
+            <label for="postTitle" class="form-label">文章标题</label>
+            <input type="email" class="form-control" id="postTitle" placeholder="新标题">
+        </div>
+        <div class="row">
             <div class="col-9">
                 <label for="postContent" class="form-label">正文</label>
                 <textarea id="postContent" required></textarea>
@@ -29,26 +29,17 @@
                 <div>
                     <label for="TagSelect" class="form-label">标签</label>
                     <ul class="list-group" id="TagSelect">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            标签1
-                            <button type="button" class="btn-close" aria-label="Close"></button>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            标签2
-                            <button type="button" class="btn-close" aria-label="Close"></button>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            标签3
-                            <button type="button" class="btn-close" aria-label="Close"></button>
-                        </li>
                     </ul>
+                    <div style="margin-top: 3px">
+                        <label for="inputLabel" class="visually-hidden">Password</label>
+                        <input type="text" class="form-control" id="inputLabel" placeholder="新标签">
+                    </div>
                 </div>
             </div>
             <button type="button" class="btn btn-outline-dark" style="width: auto;">发布</button>
-        </form>
-    </div>
-    <script>
-        let simpleMde = new SimpleMDE({ element: document.getElementById("postContent") });
-    </script>
+        </div>
+    </form>
 </main>
-{{ end }}
+[[ raw: cssContent ]]
+[[ raw: jsContent ]]
+[[ end ]]

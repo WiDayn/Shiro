@@ -1,6 +1,6 @@
-{{ extends "../layouts/admin.jet" }}
+[[ extends "./base.jet" ]]
 
-{{ block adminContent() }}
+[[ block adminContent() ]]
 <h2>文章列表</h2>
 <table style="width: 100%">
     <thead>
@@ -12,17 +12,19 @@
     </tr>
     </thead>
     <tbody>
-    {{ range index, post := .posts}}
+    [[ range index, post := .posts]]
     <tr>
         <td><input type="checkbox" class="select-article"></td>
-        <td>{{ post.Title }}</td>
-        <td>{{ post.CreatedAt }}</td>
+        <td>[[ post.Title ]]</td>
+        <td>[[ post.CreatedAt ]]</td>
         <td style="text-align: center">
             <a href="" style="width: 30%; background-color: white; color: black !important;">编辑</a>
             <a href="" style="width: 30%; background-color: white; color: black !important;">删除</a>
         </td>
     </tr>
-    {{ end }}
+    [[ end ]]
     </tbody>
 </table>
-{{ end }}
+[[ raw: cssContent ]]
+[[ raw: jsContent ]]
+[[ end ]]

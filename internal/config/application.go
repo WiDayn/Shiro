@@ -7,7 +7,17 @@ import (
 
 // 定义配置结构体
 type applicationConfig struct {
-	Database databaseConfig `toml:"database"`
+	Database    databaseConfig `toml:"database"`
+	JWTConfig   jwtConfig      `toml:"jwt"`
+	ThemeConfig themeConfig    `toml:"theme"`
+}
+
+type jwtConfig struct {
+	SigningKey string `toml:"signing_key"`
+}
+
+type themeConfig struct {
+	ThemeDir string `toml:"theme_dir"`
 }
 
 type databaseConfig struct {

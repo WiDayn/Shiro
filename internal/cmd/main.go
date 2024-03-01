@@ -4,7 +4,9 @@ import (
 	"Shiro/internal/controller/apiController"
 	"Shiro/internal/controller/viewController"
 	"Shiro/internal/data"
+	"Shiro/internal/middleware"
 	"Shiro/internal/template"
+	"Shiro/internal/theme"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/kataras/iris/v12"
 )
@@ -16,7 +18,12 @@ func main() {
 	// 初始化数据库
 	db := data.SetupDB(app)
 	defer db.Close()
-	template.LoadDir(app, "./views/BlackOrWhite")
+
+	// 检查主题完整性
+	theme.IntegrityCheck("./themes/BlackOrWhite/template")
+	template.LoadDir(app, "./themes/BlackOrWhite/template")
+
+	app.Use(middleware.JWTMiddleware)
 
 	apiController.Register(app, db)
 	viewController.Register(app, db)

@@ -4,13 +4,17 @@ body {
 nav, .black-link {
     background-color: black;
     color: white !important;
-    text-decoration: none !important;
+    text-decoration: none;
 }
 .black-link:hover{
-    text-decoration: underline
+    text-decoration: underline !important;
 }
 .container {
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 5%;
+}
+.form-check-input:checked{
+    background-color: black;
+    border-color: black;
 }

@@ -22,7 +22,7 @@ func (service *UserService) Register(username, password, email string) error {
 }
 
 func (service *UserService) Login(username, password string) (bool, error) {
-	_, storedPassword, err := service.userRepo.GetUserByUsername(username)
+	storedPassword, err := service.userRepo.GetUserByUsername(username)
 	if err != nil {
 		return false, err
 	}

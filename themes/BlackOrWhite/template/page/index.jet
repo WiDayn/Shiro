@@ -1,10 +1,10 @@
-{{extends "./layouts/application.jet"}}
+[[extends "./base.jet"]]
 
-{{ block ExtendHead() }}
+[[ block ExtendHead() ]]
 <link rel="stylesheet" href="/static/css/index/style.css">
-{{ end }}
+[[ end ]]
 
-{{block documentBody()}}
+[[block documentBody()]]
 <div class="container">
     <!-- 导航栏 -->
     <nav class="navbar navbar-expand-lg">
@@ -23,7 +23,11 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    [[ if .username != ""]]
                     <a class="nav-link black-link" href="/admin/dashboard">管理面板</a>
+                    [[ else ]]
+                    <a class="nav-link black-link" href="/admin/login">登录</a>
+                    [[ end ]]
                 </li>
             </ul>
         </div>
@@ -34,14 +38,14 @@
             <div class="row">
                 <!-- 文章摘要区域 -->
                 <div class="col-md-8">
-                    {{ range index,post := .posts}}
+                    [[ range index,post := .posts]]
                     <div>
-                        <h2>{{post.Title}}</h2>
-                        <p class="text-muted">作者: {{ post.AuthorID }} 发表日期: {{ post.CreatedAt }}</p>
-                        <p>{{ post.Content }}...</p>
+                        <h2>[[post.Title]]</h2>
+                        <p class="text-muted">作者: [[ post.AuthorID ]] 发表日期: [[ post.CreatedAt ]]</p>
+                        <p>[[ post.Content ]]...</p>
                         <a class="black-link" href="#">阅读全文</a>
                     </div>
-                    {{ end }}
+                    [[ end ]]
                 </div>
 
                 <!-- 侧边栏 -->
@@ -57,4 +61,6 @@
         </div>
     </div>
 </div>
-{{end}}
+[[ raw: cssContent ]]
+[[ raw: jsContent ]]
+[[end]]
